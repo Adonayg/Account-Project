@@ -10,6 +10,10 @@ public class Account {
 		this.secondName = secondName;
 		this.accountNumber = accountNumber;
 	}
+	
+	public Account() {
+		
+	}
 
 
 	public String getFirstName() {
