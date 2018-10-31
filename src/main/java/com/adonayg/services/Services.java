@@ -45,13 +45,6 @@ public class Services {
 	}
 
 	public int countByFirstName(String fname) {
-	
-		int count = 0;
-		for(Account account: accountMap.values()) {
-			if(account.getFirstName().equals(fname)) {
-				count++;
-			}
-		}
-		return count;
+		return (int) accountMap.entrySet().stream().filter(i -> i.getValue().getFirstName().equals(fname)).count();
 	}
 }
