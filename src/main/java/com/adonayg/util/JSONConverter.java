@@ -14,9 +14,9 @@ public class JSONConverter {
 	Logger logger;
 	private ObjectMapper mapper = new ObjectMapper();
 
-	public String convertAccount(Account account) {
+	public String convertAccount(Object obj) {
 		try {
-			return mapper.writeValueAsString(account);
+			return mapper.writeValueAsString(obj);
 		} catch (JsonProcessingException e) {
 
 			e.printStackTrace();
