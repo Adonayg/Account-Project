@@ -13,17 +13,24 @@ public class Account {
 	private String firstName;
 	private String secondName;
 	private String accountNumber;
-	
+
 	public Account(String firstName, String secondName, String accountNumber) {
 		this.firstName = firstName;
 		this.secondName = secondName;
 		this.accountNumber = accountNumber;
 	}
-	
+
 	public Account() {
-		
+
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;

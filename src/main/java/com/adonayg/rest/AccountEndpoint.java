@@ -1,6 +1,5 @@
 package com.adonayg.rest;
 
-
 import javax.inject.Inject;
 
 import javax.ws.rs.DELETE;
@@ -15,7 +14,7 @@ import com.adonayg.services.AccountService;
 
 @Path("/account")
 public class AccountEndpoint {
-	
+
 	@Inject
 	private AccountService service;
 
@@ -25,11 +24,11 @@ public class AccountEndpoint {
 	public String getAllAccounts() {
 		return service.getAllAccounts();
 	}
-	
+
 	@Path("/getAccount/{id}")
 	@GET
 	@Produces({ "application/json" })
-	public String getAllAccounts(Long id) {
+	public String getAccount(Long id) {
 		return service.getAccount(id);
 	}
 
@@ -46,14 +45,14 @@ public class AccountEndpoint {
 	public String deleteAccount(@PathParam("id") Long id) {
 		return service.deleteAccount(id);
 	}
-	
+
 	@Path("/updateAccount")
 	@PUT
 	@Produces({ "application/json" })
 	public String updateAccount(String account) {
 		return service.updateAccount(account);
 	}
-	
+
 	public void setService(AccountService service) {
 		this.service = service;
 	}

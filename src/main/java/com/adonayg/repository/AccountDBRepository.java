@@ -42,14 +42,18 @@ public class AccountDBRepository implements AccountRepository {
 		return "{\"message\": \"No account with that id\"}";
 	}
 
-
 	@Override
 	@Transactional(REQUIRED)
 	public String updateAccount(String account) {
-		 manager.getTransaction().begin();
-	     manager.merge(jsonConverter.convertJsonToAccount(account));
-	     manager.getTransaction().commit();
-		return "{\"message\": \"account has been sucessfully updated\"}";
+		Account accountUpdates = jsonConverter.convertJsonToAccount(account);
+		Account accountInDB = findAccount(accountUpdates.getId());
+		if (accountInDB != null) {
+			accountInDB.setFirstName(accountUpdates.getFirstName());
+			accountInDB.setSecondName(accountUpdates.getSecondName());
+			accountInDB.setAccountNumber(accountUpdates.getAccountNumber());
+			return jsonConverter.convertAccount(accountInDB);
+		}
+		return "{\"message\": \"account doesn't exsist\"}";
 	}
 
 	@Override
@@ -69,7 +73,7 @@ public class AccountDBRepository implements AccountRepository {
 		}
 		return "{\"message\": \"account sucessfully deleted\"}";
 	}
-	
+
 	public Account findAccount(Long id) {
 		return manager.find(Account.class, id);
 

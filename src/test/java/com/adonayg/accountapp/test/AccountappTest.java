@@ -9,7 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.adonayg.entitiy.Account;
-import com.adonayg.services.Services;
+import com.adonayg.repository.AccountMapRepository;
 
 public class AccountappTest {
 
@@ -21,11 +21,11 @@ public class AccountappTest {
 		Account account1 = new Account("John", "Doe", "123");
 		Account account2 = new Account("Smithy", "Dunn", "134");
 		Account account3 = new Account("John", "Smith", "341");
-		Services service = new Services();
+		AccountMapRepository service = new AccountMapRepository();
 	
-		service.addAccount(1, account1);
-		service.addAccount(2, account2);
-		service.addAccount(3, account3);
+		service.addAccount(account1);
+		service.addAccount(account2);
+		service.addAccount(account3);
 		
 		int actual = service.countByFirstName("John");
 		assertEquals(2, actual);

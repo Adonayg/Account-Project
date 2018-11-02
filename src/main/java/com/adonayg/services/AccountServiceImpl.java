@@ -1,10 +1,10 @@
 package com.adonayg.services;
+
 import javax.inject.Inject;
 import com.adonayg.repository.AccountRepository;
 
+public class AccountServiceImpl implements AccountService {
 
-public class AccountServiceImpl implements AccountService{
-	
 	@Inject
 	private AccountRepository repo;
 
